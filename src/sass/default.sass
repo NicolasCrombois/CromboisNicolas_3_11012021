@@ -1,0 +1,231 @@
+$purple: #9356DC
+$pink: #FF79DA
+$light-green: #99E2D0
+$light-gray: #F6F6F6
+$green: #038766
+
+@font-face
+    font-family: Shrikhand-Regular
+    src: url(../fonts/Shrikhand-Regular.ttf)
+@font-face
+    font-family: Roboto-Black
+    src: url(../fonts/Roboto-Black.ttf)
+@font-face
+    font-family: Roboto-Bold
+    src: url(../fonts/Roboto-Bold.ttf)
+@font-face
+    font-family: Roboto-Medium
+    src: url(../fonts/Roboto-Medium.ttf)
+@font-face
+    font-family: Roboto-Regular
+    src: url(../fonts/Roboto-Regular.ttf)
+@font-face
+    font-family: Roboto-Light
+    src: url(../fonts/Roboto-Light.ttf)
+
+
+@mixin font-title
+    font-family: Shrikhand-Regular
+@mixin font-logo
+    font-family: Shrikhand-Regular
+@mixin font-h1
+    font-family: Roboto-Black
+@mixin font-text--Medium
+    font-family: Roboto-Medium
+@mixin font-text--Regular
+    font-family: Roboto-Regular
+@mixin font-text--Light
+    font-family: Roboto-Light
+
+
+body
+    background-color: white
+    margin: 0
+
+header
+    width: 100%
+    position: sticky
+    background-color: white
+    top: 0
+    z-index: 1
+h1
+    @include font-h1
+    font-size: 26px
+    padding: 42px 0 25px 0
+    margin: 0
+h2
+    @include font-h1
+    font-size: 20px
+
+p
+    @include font-text--Medium
+.logo
+    @include font-logo
+    text-align: center
+    padding: 20px 0px 10px 0px
+    box-shadow: 0 0 .2em rgba(0, 0, 0, 0.6)
+    margin: 0
+    font-size: 32px
+
+#location
+    width: 100%
+    background-color: #ebebeb
+    text-align: center
+    color: #323232
+    & i
+        display: inline-block
+        margin-right: 15px
+    & p 
+        @include font-text--Medium
+        display: inline-block
+        margin-right: 27px
+    & i, & p 
+        font-size: 17px
+
+#find-restaurant
+    background-color: $light-gray
+    padding: 0 9% 0 9%
+    text-align: center
+    padding-bottom: 62px
+    & h1
+        padding-left: 13px
+        padding-right: 13px
+        line-height: 1.1
+        padding: 42px 0 0 0
+    & p 
+        font-size: 19px
+        @include font-text--Light
+    & button
+        margin-top: 15px
+        height: 53px
+        font-size: 18px
+        @include font-text--Regular
+        color: white
+        border: 0
+        border-radius: 25px
+        padding: 0px 25px
+        background: linear-gradient($pink, $purple)
+        box-shadow: 0 2px .5em rgba(0, 0, 0, 0.4)
+
+#operation
+    padding: 0 5% 10% 5%
+    & .unit
+        width: 100%
+        position: relative
+        margin-bottom: 27px
+        &__number
+            width: 25px
+            background-color: $purple
+            text-align: center
+            border-radius: 12.5px
+            padding: 2.5px 0
+            position: absolute
+            top: 27px
+
+            & p
+                @include font-text--Light
+                margin: auto
+                color: white
+        &__description
+            margin-left: 10px
+            background-color: $light-gray
+            padding: 12px 0 12px 35px
+            border-radius: 25px
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2)
+            transition: background-color 0.4s
+            & i
+                display: inline-block
+                font-size: 20px
+                margin-right: 20px
+                color: #7e7e7e
+                transition: color 0.4s
+            & p
+                display: inline-block
+                font-size: 18px
+        &__description:hover
+            background-color: #f5edff
+            transition: background-color 0.4s
+            & i
+                color: $purple
+                transition: color 0.4s
+#restaurants
+    padding: 0 5% 8% 5%
+    background-color: $light-gray
+    & .unit 
+        position: relative
+        margin-bottom: 20px
+        & img 
+            border-radius: 15px 15px 0 0
+            object-fit: cover
+            height: 205px
+            width: 100%
+        &__new
+            position: absolute
+            width: auto
+            top: 15px
+            right: 10px
+            background-color: $light-green
+            color: $green
+            padding: 0 10px 
+            border-radius: 2px
+            & p 
+                margin: 5px
+                font-size: 14px
+        &__description
+            height: 50px
+            background-color: white
+            border-radius: 0 0 15px 15px
+            display: flex
+            flex-wrap: wrap
+            flex-direction: column
+            margin-top: -3px
+            padding: 15px 15px 10px 15px
+            & h2
+                margin: 0
+                width: 85%
+                height: auto
+            & p 
+                width: 85%
+                margin: 0
+                font-size: 18px
+                @include font-text--Light
+            &__heart
+                position: relative
+                height: 30px
+                & i 
+                    position: absolute
+                    vertical-align: middle
+                    font-size: 28px
+                    width: 30px
+                    font-weight: lighter
+                    top: 10px
+                    right: 5px
+                    color: black
+                    transition: color 0.4s
+                & i:hover 
+                    font-weight: bold
+                    display: block
+                    background: -webkit-linear-gradient($purple, $pink)
+                    -webkit-background-clip: text
+                    -webkit-text-fill-color: transparent
+                    transition: all 0.5s
+footer
+    background-color: #323232
+    font-size: 16px
+    color: white
+    padding: 0 0 15px 28px 
+    & .little-size
+        font-size: 19px
+        box-shadow: none
+        text-align: left
+    & ul 
+        padding-left: 0
+        list-style-type: none
+        margin: 0
+        & li 
+            @include font-text--Regular
+            cursor: pointer
+            margin: 9px 0
+            & i 
+                width: 16
+                height: 16
