@@ -38,6 +38,16 @@ $green: #038766
     font-family: Roboto-Light
 
 
+@keyframes progress-menu-unit
+    from
+        transform: translate(0, 25%)
+        opacity: 0
+    to
+        transform: translate(0, 0)
+        opacity: 1
+
+
+
 body
     background-color: white
     margin: 0
@@ -48,6 +58,20 @@ header
     background-color: white
     top: 0
     z-index: 1
+    box-shadow: 0 0 .2em rgba(0, 0, 0, 0.6)
+    & a i 
+        color: #404040
+        font-size: 28px
+        position: fixed
+        top: 30px
+        left: 30px
+    & .logo
+        font-size: 32px
+        @include font-logo
+        text-align: center
+        padding: 20px 0px 10px 0px
+        margin: 0
+        
 h1
     @include font-h1
     font-size: 26px
@@ -59,13 +83,6 @@ h2
 
 p
     @include font-text--Medium
-.logo
-    @include font-logo
-    text-align: center
-    padding: 20px 0px 10px 0px
-    box-shadow: 0 0 .2em rgba(0, 0, 0, 0.6)
-    margin: 0
-    font-size: 32px
 
 #location
     width: 100%
@@ -154,6 +171,11 @@ p
     & .unit 
         position: relative
         margin-bottom: 20px
+        & a
+            color: black
+            text-decoration: none
+        &:hover a
+            color: $purple
         & img 
             border-radius: 15px 15px 0 0
             object-fit: cover
@@ -194,6 +216,7 @@ p
                 height: 30px
                 & i 
                     position: absolute
+                    cursor: pointer
                     vertical-align: middle
                     font-size: 28px
                     width: 30px
@@ -201,20 +224,177 @@ p
                     top: 10px
                     right: 5px
                     color: black
-                    transition: color 0.4s
-                & i:hover 
+                & i.no-hover
+                    opacity: 100%
+                    transition: opacity 0.6s
+                &:hover i.no-hover
+                    opacity: 0%
+                    transition: opacity 0.4s
+                & i.hover
                     font-weight: bold
-                    display: block
+                    opacity: 0%
                     background: -webkit-linear-gradient($purple, $pink)
                     -webkit-background-clip: text
                     -webkit-text-fill-color: transparent
-                    transition: all 0.5s
+                    transition: opacity 0.6s
+                &:hover i.hover
+                    opacity: 100%
+                    transition: opacity 0.6s
+
+#illustration img
+    width: 100%
+    height: 270px
+    object-fit: cover
+.menu
+    margin-top: -55px
+    border-radius: 45px 45px 0 0 
+    padding: 0 5% 8% 5%
+    background-color: $light-gray
+    position: relative
+    & h1
+        @include font-title
+        font-size: 28px
+        padding: 38px 0 18px 0
+    &_title_heart i.fa-heart
+        position: absolute
+        top: 44px
+        right: 40px
+        font-size: 28px
+        cursor: pointer
+    &_title_heart i.no-hover
+        font-weight: lighter
+        opacity: 100%
+        transition: opacity 0.6s
+    &_title_heart:hover i.no-hover
+        opacity: 0%
+        transition: opacity 0.4s
+    &_title_heart i.hover
+        font-weight: bold
+        opacity: 0%
+        background: -webkit-linear-gradient($purple, $pink)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        transition: opacity 0.6s
+    &_title_heart:hover i.hover
+        opacity: 100%
+        transition: opacity 0.6s
+    &_category
+        margin-bottom: 55px
+        h2
+            @include font-text--Light
+            font-size: 18px
+            margin: 16px 0 5px 0
+        & .green-underline
+            width: 45px
+            height: 3px
+            background-color: $light-green
+        &_list
+            width: 100%
+            &_unit
+                margin: 15px 0 15px 0
+                display: flex
+                position: relative
+                max-height: 150px
+                flex-wrap: wrap
+                background-color: white
+                padding-left: 15px
+                border-radius: 20px
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+                transform: translate(0, 0)
+                animation-name: progress-menu-unit
+                animation-duration: 2s
+                opacity: 1
+                overflow: hidden
+                & h2
+                    @include font-text--Regular
+                    width: 80%
+                    margin: 11px 0 5px 0
+                    font-size: 17px
+                    transition: 0.6s width  
+                    &.title_on_one_line                  
+                        white-space: nowrap
+                        overflow: hidden
+                        text-overflow: ellipsis
+                    &.title_on_two_lines
+                        display: -webkit-box
+                        -webkit-line-clamp: 2
+                        -webkit-box-orient: vertical
+                &_second-line
+                    height: 30%
+                    width: 81%
+                    margin: 0 0 11px 0
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    white-space: nowrap
+                    @include font-text--Regular
+                    font-size: 14px
+                    transition: 0.6s width
+                &_price
+                    @include font-text--Medium
+                    margin-top: 0px
+                    padding-left: 5%
+                    padding-right: 2%
+                    width: 10%
+                & .check
+                    background-color: $light-green
+                    color: white
+                    font-size: 26px
+                    width: 20%
+                    height: 100%
+                    text-align: center
+                    vertical-align: middle
+                    transition: 0.6s width, 0.6s right
+                    position: absolute
+                    right: -20%
+                    & .parent_check
+                        position: relative
+                        width: 100%
+                        height: 100%
+                        & .child_check
+                            position: absolute
+                            top: 50%
+                            left: 50%
+                            transform: translate(-50%, -50%)
+                            & i 
+                                visibility: visible
+                                transition: transform 500ms ease-in-out
+                            
+            &_unit:hover 
+                & .menu_category_list_unit_second-line
+                    width: 59.5%
+                & h2
+                    width: 75%
+                    &.title_on_one_line
+                        width: 59.5%
+                & .check
+                    width: 20%
+                    right: 0px
+                    & i 
+                        transform: rotate(360deg)
+
+    & button
+        height: 53px
+        font-size: 18px
+        @include font-text--Regular
+        color: white
+        border: 0
+        border-radius: 25px
+        padding: 0px 45px
+        background: linear-gradient($pink, $purple)
+        box-shadow: 0 2px .5em rgba(0, 0, 0, 0.4)
+    &-button
+        text-align: center
+        margin-bottom: 25px
+
+
 footer
     background-color: #323232
     font-size: 16px
     color: white
-    padding: 0 0 15px 28px 
+    padding: 15px 0 15px 28px 
     & .little-size
+        @include font-logo
+        margin-top: 0
         font-size: 19px
         box-shadow: none
         text-align: left
@@ -229,3 +409,12 @@ footer
             & i 
                 width: 16
                 height: 16
+
+$number_max_unit: 8
+$delay: 0.1
+
+@for $i from 0 through $number_max_unit
+    .unit-#{$i}
+        animation-delay: #{$delay}s
+    
+    $delay: $delay + 0.3
