@@ -3,6 +3,8 @@ $pink: #FF79DA
 $light-green: #99E2D0
 $light-gray: #F6F6F6
 $green: #038766
+$number_max_unit: 9
+$delay: 0.1
 
 @font-face
     font-family: Shrikhand-Regular
@@ -22,6 +24,13 @@ $green: #038766
 @font-face
     font-family: Roboto-Light
     src: url(../fonts/Roboto-Light.ttf)
+
+
+@for $i from 0 through $number_max_unit
+    .unit-#{$i}
+        animation-delay: #{$delay}s
+    
+    $delay: $delay + 0.3
 
 
 @mixin font-title
@@ -45,7 +54,26 @@ $green: #038766
     to
         transform: translate(0, 0)
         opacity: 1
+        
+@keyframes animation-check-dish
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
 
+@keyframes disappearance-loader
+    0%
+        opacity: 1
+        visibility: visible
+    100%
+        opacity: 0
+        visibility: hidden
+
+@keyframes spin 
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
 
 
 body
@@ -83,6 +111,30 @@ h2
 
 p
     @include font-text--Medium
+#loader
+    position: fixed
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    height: 100vh
+    top: 0
+    left: 0
+    background-color: white
+    z-index: 2
+    animation-delay: 2s
+    animation-duration: 1s
+    animation-name: disappearance-loader 
+    animation-fill-mode: forwards
+    .loader-wheel
+        position: fixed
+        border: 16px solid $light-gray
+        border-top: 16px solid $purple
+        border-radius: 50%
+        width: 120px
+        height: 120px
+        animation: spin 2s linear infinite
+
 
 #location
     width: 100%
@@ -135,7 +187,7 @@ p
             background-color: $purple
             text-align: center
             border-radius: 12.5px
-            padding: 2.5px 0
+            padding: 3.2px 0
             position: absolute
             top: 27px
 
@@ -171,11 +223,11 @@ p
     & .unit 
         position: relative
         margin-bottom: 20px
+        border-radius: 15px
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
         & a
             color: black
             text-decoration: none
-        &:hover a
-            color: $purple
         & img 
             border-radius: 15px 15px 0 0
             object-fit: cover
@@ -194,6 +246,8 @@ p
                 margin: 5px
                 font-size: 14px
         &__description
+            color: black
+            transition: 0.4s color
             height: 50px
             background-color: white
             border-radius: 0 0 15px 15px
@@ -212,34 +266,42 @@ p
                 font-size: 18px
                 @include font-text--Light
             &__heart
-                position: relative
-                height: 30px
-                & i 
-                    position: absolute
-                    cursor: pointer
-                    vertical-align: middle
-                    font-size: 28px
-                    width: 30px
-                    font-weight: lighter
-                    top: 10px
-                    right: 5px
-                    color: black
-                & i.no-hover
-                    opacity: 100%
-                    transition: opacity 0.6s
-                &:hover i.no-hover
-                    opacity: 0%
-                    transition: opacity 0.4s
-                & i.hover
-                    font-weight: bold
-                    opacity: 0%
-                    background: -webkit-linear-gradient($purple, $pink)
-                    -webkit-background-clip: text
-                    -webkit-text-fill-color: transparent
-                    transition: opacity 0.6s
-                &:hover i.hover
-                    opacity: 100%
-                    transition: opacity 0.6s
+                position: absolute
+                top: 220px
+                right: 20px
+                &__child
+                    position: relative
+                    width: 40px
+                    height: 48px
+                    & i 
+                        position: absolute
+                        cursor: pointer
+                        vertical-align: middle
+                        font-size: 28px
+                        width: 30px
+                        font-weight: lighter
+                        top: 10px
+                        right: 5px
+                        color: black
+                    & i.no-hover
+                        opacity: 100%
+                        transition: opacity 0.6s
+                    &:hover i.no-hover
+                        opacity: 0%
+                        transition: opacity 0.4s
+                    & i.hover
+                        font-weight: bold
+                        opacity: 0%
+                        background: -webkit-linear-gradient($purple, $pink)
+                        -webkit-background-clip: text
+                        -webkit-text-fill-color: transparent
+                        transition: opacity 0.6s
+                    &:hover i.hover
+                        opacity: 100%
+                        transition: opacity 0.6s
+        &__description:hover
+            color: $purple
+
 
 #illustration img
     width: 100%
@@ -303,7 +365,8 @@ p
                 transform: translate(0, 0)
                 animation-name: progress-menu-unit
                 animation-duration: 2s
-                opacity: 1
+                animation-fill-mode: forwards
+                opacity: 0
                 overflow: hidden
                 & h2
                     @include font-text--Regular
@@ -331,7 +394,7 @@ p
                     transition: 0.6s width
                 &_price
                     @include font-text--Medium
-                    margin-top: 0px
+                    margin: 0px
                     padding-left: 5%
                     padding-right: 2%
                     width: 10%
@@ -340,12 +403,14 @@ p
                     color: white
                     font-size: 26px
                     width: 20%
+                    max-width: 110px
                     height: 100%
                     text-align: center
                     vertical-align: middle
                     transition: 0.6s width, 0.6s right
                     position: absolute
                     right: -20%
+
                     & .parent_check
                         position: relative
                         width: 100%
@@ -355,9 +420,6 @@ p
                             top: 50%
                             left: 50%
                             transform: translate(-50%, -50%)
-                            & i 
-                                visibility: visible
-                                transition: transform 500ms ease-in-out
                             
             &_unit:hover 
                 & .menu_category_list_unit_second-line
@@ -370,7 +432,7 @@ p
                     width: 20%
                     right: 0px
                     & i 
-                        transform: rotate(360deg)
+                        animation: animation-check-dish 500ms
 
     & button
         height: 53px
@@ -391,7 +453,7 @@ footer
     background-color: #323232
     font-size: 16px
     color: white
-    padding: 15px 0 15px 28px 
+    padding: 25px 0 15px 28px 
     & .little-size
         @include font-logo
         margin-top: 0
@@ -407,14 +469,98 @@ footer
             cursor: pointer
             margin: 9px 0
             & i 
-                width: 16
-                height: 16
+                width: 24px
+                height: 16px
 
-$number_max_unit: 8
-$delay: 0.1
 
-@for $i from 0 through $number_max_unit
-    .unit-#{$i}
-        animation-delay: #{$delay}s
+@media screen and (min-width: 1025px)
+    .menu
+        padding: 0px 5% 3% 5%
+        & .all-category
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+        &_category
+            width: 32%
+        &-button
+            width: 100%
+            display: flex
+            justify-content: center
+            align-items: center
+
+@media screen and (min-width: 769px)
+    #body__all-categories
+        display: flex
+        flex-wrap: wrap
+    #information-top-page
+        width: 50%
+    #find-restaurant
+        height: 300px
+        padding: 88px 9%
+    #operation
+        width: 50%
+        padding: 10px 0
+        & h1 
+            padding-left: 30px
+        & .unit 
+            padding-left: 30px
+            width: 87%
+    #restaurants
+        background-color: #F9F9F9
+        & div#all-restaurants
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+            & .unit
+                width: 48%
+
+@media screen and (min-width: 769px) and (max-width: 1024px)
+    .menu
+        padding: 0px 5% 3% 5%
+        & .all-category
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+        &_category
+            width: 45%
+        &-button
+            width: 45%
+            display: flex
+            justify-content: center
+            align-items: center
+
+
+@media screen and (min-width: 620px) and (max-width: 768px)
+    .menu_category_list_unit
+        &_price
+            padding-left: 10%
+            transition: padding-left 0.7s
+            width: 6%
+    .menu_category_list_unit:hover 
+        & .menu_category_list_unit_second-line
+            width: 75%
+        & h2
+            width: 80%
+            &.title_on_one_line
+                width: 80%
+            & .check
+                width: 10%
+                right: 0px
+        & .menu_category_list_unit_price
+            padding-left: 2%
+
+@media screen and (min-width: 376px) and (max-width: 619px)
     
-    $delay: $delay + 0.3
+    .menu_category_list_unit:hover 
+        & .menu_category_list_unit_price
+            padding-right: 20px
+            padding-left: 3.5%
+        & .menu_category_list_unit_second-line
+            width: 65%
+        & h2
+            width: 66%
+            &.title_on_one_line
+                width: 65%
+            & .check
+                width: 10%
+                right: 0px
