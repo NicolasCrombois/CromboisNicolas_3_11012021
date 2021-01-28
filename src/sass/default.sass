@@ -398,6 +398,7 @@ p
                     padding-left: 5%
                     padding-right: 2%
                     width: 10%
+                    transition: padding 0.7s
                 & .check
                     background-color: $light-green
                     color: white
@@ -472,7 +473,52 @@ footer
                 width: 24px
                 height: 16px
 
+@media screen and (min-width: 1441px)
+    .menu
+        &_category_list
+            &_unit
+                & h2
+                    width: 80%
+                &_price
+                    padding-left: 9%
+                    width: 7%
+            &_unit:hover 
+                & h2
+                    width: 80%
+                & .menu_category_list_unit_price
+                    padding-left: 5%
+                & .menu_category_list_unit_second-line
+                    width: 64.5%
 
+@media screen and (min-width: 1025px) and (max-width: 1440px)
+    .menu
+        &_category_list
+            &_unit
+                & h2
+                    width: 80%
+                &_second-line
+                    width: 81%
+                &_price
+                    margin: 0px
+                    padding-left: 6%
+                    padding-right: 4%
+                    width: 8%
+                    transition: padding 0.6s
+                & .check
+                    width: 20%
+                    max-width: 110px
+            &_unit:hover 
+                & .menu_category_list_unit_second-line
+                    width: 65%
+                & h2
+                    width: 75%
+                    &.title_on_one_line
+                        width: 65%
+                & .menu_category_list_unit_price
+                    padding-left: 2%
+                & .check
+                    width: 20%
+                    right: 0px
 @media screen and (min-width: 1025px)
     .menu
         padding: 0px 5% 3% 5%
@@ -534,7 +580,6 @@ footer
     .menu_category_list_unit
         &_price
             padding-left: 10%
-            transition: padding-left 0.7s
             width: 6%
     .menu_category_list_unit:hover 
         & .menu_category_list_unit_second-line
@@ -554,7 +599,7 @@ footer
     .menu_category_list_unit:hover 
         & .menu_category_list_unit_price
             padding-right: 20px
-            padding-left: 3.5%
+            padding-left: 2%
         & .menu_category_list_unit_second-line
             width: 65%
         & h2
