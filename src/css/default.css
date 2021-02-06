@@ -536,13 +536,20 @@ footer {
       width: 87%; }
 
   #restaurants {
-    background-color: #F9F9F9; }
+    background-color: #F9F9F9;
+    width: 100%; }
+    #restaurants h1 {
+      max-width: 1025px;
+      margin: auto; }
     #restaurants div#all-restaurants {
+      max-width: 1025px;
+      margin: auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between; }
       #restaurants div#all-restaurants .unit {
-        width: 48%; } }
+        width: 48%;
+        margin-bottom: 45px; } }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .menu {
     padding: 0px 5% 3% 5%; }
