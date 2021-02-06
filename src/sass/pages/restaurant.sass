@@ -1,0 +1,145 @@
+#illustration img
+    width: 100%
+    height: 270px
+    object-fit: cover
+.menu
+    margin-top: -55px
+    border-radius: 45px 45px 0 0 
+    padding: 0 5% 8% 5%
+    background-color: $light-gray
+    position: relative
+    & h1
+        @include font-title
+        font-size: 28px
+        padding: 38px 0 18px 0
+    &_title_heart i.fa-heart
+        position: absolute
+        top: 44px
+        right: 40px
+        font-size: 28px
+        cursor: pointer
+    &_title_heart i.no-hover
+        font-weight: lighter
+        opacity: 100%
+        transition: opacity 0.6s
+    &_title_heart:hover i.no-hover
+        opacity: 0%
+        transition: opacity 0.4s
+    &_title_heart i.hover
+        font-weight: bold
+        opacity: 0%
+        background: -webkit-linear-gradient($purple, $pink)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        transition: opacity 0.6s
+    &_title_heart:hover i.hover
+        opacity: 100%
+        transition: opacity 0.6s
+    &_category
+        margin-bottom: 55px
+        h2
+            @include font-text--Light
+            font-size: 18px
+            margin: 16px 0 5px 0
+        & .green-underline
+            width: 45px
+            height: 3px
+            background-color: $light-green
+        &_list
+            width: 100%
+            &_unit
+                margin: 15px 0 15px 0
+                display: flex
+                position: relative
+                max-height: 150px
+                flex-wrap: wrap
+                background-color: white
+                padding-left: 15px
+                border-radius: 20px
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+                transform: translate(0, 0)
+                animation-name: progress-menu-unit
+                animation-duration: 2s
+                animation-fill-mode: forwards
+                opacity: 0
+                overflow: hidden
+                & h2
+                    @include font-text--Regular
+                    width: 80%
+                    margin: 11px 0 5px 0
+                    font-size: 17px
+                    transition: 0.6s width  
+                    &.title_on_one_line                  
+                        white-space: nowrap
+                        overflow: hidden
+                        text-overflow: ellipsis
+                    &.title_on_two_lines
+                        display: -webkit-box
+                        -webkit-line-clamp: 2
+                        -webkit-box-orient: vertical
+                &_second-line
+                    height: 30%
+                    width: 81%
+                    margin: 0 0 11px 0
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    white-space: nowrap
+                    @include font-text--Regular
+                    font-size: 14px
+                    transition: 0.6s width
+                &_price
+                    @include font-text--Medium
+                    margin: 0px
+                    padding-left: 5%
+                    padding-right: 2%
+                    width: 10%
+                    transition: padding 0.7s
+                & .check
+                    background-color: $light-green
+                    color: white
+                    font-size: 26px
+                    width: 20%
+                    max-width: 110px
+                    height: 100%
+                    text-align: center
+                    vertical-align: middle
+                    transition: 0.6s width, 0.6s right
+                    position: absolute
+                    right: -20%
+
+                    & .parent_check
+                        position: relative
+                        width: 100%
+                        height: 100%
+                        & .child_check
+                            position: absolute
+                            top: 50%
+                            left: 50%
+                            transform: translate(-50%, -50%)
+                            
+            &_unit:hover 
+                & .menu_category_list_unit_second-line
+                    width: 59.5%
+                & h2
+                    width: 75%
+                    &.title_on_one_line
+                        width: 59.5%
+                & .check
+                    width: 20%
+                    right: 0px
+                    & i 
+                        animation: animation-check-dish 500ms
+
+    & button
+        height: 53px
+        font-size: 18px
+        @include font-text--Regular
+        color: white
+        border: 0
+        border-radius: 25px
+        padding: 0px 45px
+        background: linear-gradient($pink, $purple)
+        box-shadow: 0 2px .5em rgba(0, 0, 0, 0.4)
+    &-button
+        text-align: center
+        margin-bottom: 25px

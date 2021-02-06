@@ -1,5 +1,5 @@
 {
-  "name": "website",
+  "name": "sass_restaurant",
   "version": "1.0.0",
   "description": "Projet 3 - OpenClassrooms",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/NicolasCrombois/CromboisNicolas_3_11012021.git"
   },
-  "author": "",
+  "author": "Nicolas Crombois",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/NicolasCrombois/CromboisNicolas_3_11012021/issues"
