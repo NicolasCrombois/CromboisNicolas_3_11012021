@@ -22,9 +22,6 @@ p {
   font-family: Roboto-Black;
   src: url(../fonts/Roboto-Black.ttf); }
 @font-face {
-  font-family: Roboto-Bold;
-  src: url(../fonts/Roboto-Bold.ttf); }
-@font-face {
   font-family: Roboto-Medium;
   src: url(../fonts/Roboto-Medium.ttf); }
 @font-face {
@@ -82,7 +79,7 @@ p {
   100% {
     opacity: 0;
     visibility: hidden; } }
-@keyframes spin {
+@keyframes spin-loader {
   0% {
     transform: rotate(0deg); }
   100% {
@@ -109,6 +106,9 @@ footer {
       footer ul li i {
         width: 24px;
         height: 16px; }
+      footer ul li a {
+        text-decoration: none;
+        color: white; }
 
 header {
   width: 100%;
@@ -152,7 +152,7 @@ header {
     border-radius: 50%;
     width: 120px;
     height: 120px;
-    animation: spin 2s linear infinite; }
+    animation: spin-loader 2s linear infinite; }
 
 #illustration img {
   width: 100%;

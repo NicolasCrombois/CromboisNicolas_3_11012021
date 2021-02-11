@@ -4,7 +4,7 @@
   "description": "Projet 3 - OpenClassrooms",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./src/sass/default.sass:./src/css/default.css"
+    "sass": "sass --watch ./src/sass/restaurant.sass:./src/css/restaurant.css"
   },
   "repository": {
     "type": "git",
