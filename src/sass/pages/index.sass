@@ -37,6 +37,10 @@
         padding: 0px 25px
         background: linear-gradient($pink, $purple)
         box-shadow: 0 2px .5em rgba(0, 0, 0, 0.4)
+        transition: box-shadow 0.4s, background 0.4s
+    & button:hover
+        background-image: linear-gradient(lighten($pink, 5%), lighten($purple, 5%))
+        box-shadow: 0 2px .5em rgba(0, 0, 0, 0.8)
 
 #operation
     padding: 0 5% 10% 5%

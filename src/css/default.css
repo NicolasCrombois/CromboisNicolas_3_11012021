@@ -192,7 +192,11 @@ header {
     border-radius: 25px;
     padding: 0px 25px;
     background: linear-gradient(#FF79DA, #9356DC);
-    box-shadow: 0 2px 0.5em rgba(0, 0, 0, 0.4); }
+    box-shadow: 0 2px 0.5em rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.4s, background 0.4s; }
+  #find-restaurant button:hover {
+    background-image: linear-gradient(#ff93e1, #a16be0);
+    box-shadow: 0 2px 0.5em rgba(0, 0, 0, 0.8); }
 
 #operation {
   padding: 0 5% 10% 5%; }

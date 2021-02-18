@@ -291,8 +291,12 @@ header {
     border: 0;
     border-radius: 25px;
     padding: 0px 45px;
-    background: linear-gradient(#FF79DA, #9356DC);
-    box-shadow: 0 2px 0.5em rgba(0, 0, 0, 0.4); }
+    background-image: linear-gradient(#FF79DA, #9356DC);
+    box-shadow: 0 2px 0.5em rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.4s; }
+  .menu button:hover {
+    background-image: linear-gradient(#ff93e1, #a16be0);
+    box-shadow: 0 2px 0.5em rgba(0, 0, 0, 0.8); }
   .menu-button {
     text-align: center;
     margin-bottom: 25px; }
